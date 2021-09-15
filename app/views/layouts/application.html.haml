@@ -1,0 +1,69 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"}/
+    %meta{:name => "google", :value => "notranslate"}/
+    %title FlipTeacher
+    / begin::Fonts
+    -# %script{:src => "https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"}
+    -# :javascript
+    -#   WebFont.load({
+    -#     google: {"families":["Poppins:300,400,500,600,700","Raleway:300,400,500,600,700"]},
+    -#       active: function() {
+    -#         sessionStorage.fonts = true;
+    -#       }
+    -#     });
+    / end::Fonts
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    -# = stylesheet_link_tag "internal/#{params[:controller]}"
+    = yield :stylesheet if content_for?(:stylesheet)
+    = csrf_meta_tags
+    = csp_meta_tag
+    -# = favicon_link_tag 'favicon.ico'
+    -# = favicon_link_tag 'apple-touch-icon-precomposed.png', rel: 'apple-touch-icon', type: 'image/png', skip_pipeline: true
+  / begin:: Body
+  %body
+    / begin:: Page
+    .fb-page-wrapper
+      = render "layouts/header"
+      %section.d-flex.fb-page
+        %aside#fbSidebar.fb-sidebar.modal.open{:role => "dialog", :tabindex => "-1"}
+          -# .fb-sidebar-header
+          -#   %h6.mb-0 Header
+          .fb-sidebar-content
+            -# .header Menu
+            - if current_user.teacher?
+              = render "layouts/teachers_menu"
+            - if current_user.school_admin?
+              = render "layouts/school_admin_menu"
+            - if current_user.admin?
+              = render "layouts/admin_menu"
+          -# .fb-sidebar-footer
+          -#   %h6.mb-0 Footer
+        .fb-content-wrapper
+          .fb-content
+            =yield
+    - unless flash.empty?
+      %script
+        - flash.each do |f|
+          - type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info')
+          toastr['#{type}']('#{f[1]}');
+        - flash.clear
+    / end:: Page
+    = yield :beforeBodyEnd if content_for?(:beforeBodyEnd)
+    / end::Global Config
+    :javascript
+      //inline js
+      $(document).on("click", function(e) {
+        if (($(e.target).is(".modal-backdrop, .logo, .logo *") === true)) {
+          $ (".modal").modal ("hide");
+        }
+      });
+    = yield :javascript if content_for?(:javascript)
+    -# = javascript_include_tag "bs_theme/bs_"+params[:controller]
+    %script
+      -# webslidemenu.onLoad(); // global js
+  / end:: Body

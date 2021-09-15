@@ -1,0 +1,13 @@
+%ul#accordionFBSidebar.accordion.fb-accordion
+  %li.fb-accordion-item
+    %a#headingChapters.collapse-link.collapsed{"aria-controls" => "collapseChapters", "aria-expanded" => "false", "href" => "#collapseChapters", "data-toggle" => "collapse"}
+      %div
+        %i.fas.fa-book.mr-2
+        %span Chapters
+      %i.fas.fa-angle-right
+    #collapseChapters.collapse.collapse-content{"aria-labelledby" => "headingChapters", "data-parent" => "#accordionFBSidebar"}
+      %nav.nav.flex-column.flex-nowrap.nav-sidebar
+        - if current_user.role.eql? 'admin'
+          - ClassRoom.distinct.each do |x|
+            = link_to admin_chapters_path({ key: x.key, classroom_id: x.id}), class: "nav-link #{current? "active", admin_chapters_path({ key: x.key, classroom_id: x.id})}" do
+              #{x.key}
