@@ -17,7 +17,7 @@
     / end::Fonts
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     -# = stylesheet_link_tag "internal/#{params[:controller]}"
     = yield :stylesheet if content_for?(:stylesheet)
     = csrf_meta_tags
@@ -28,28 +28,15 @@
   %body
     / begin:: Page
     .fb-page-wrapper
-      = render "layouts/header"
+      = render "partial/header"
       %section.d-flex.fb-page
-        %aside#fbSidebar.fb-sidebar.modal.open{:role => "dialog", :tabindex => "-1"}
-          -# .fb-sidebar-header
-          -#   %h6.mb-0 Header
-          .fb-sidebar-content
-            -# .header Menu
-            - if current_user.teacher?
-              = render "layouts/teachers_menu"
-            - if current_user.school_admin?
-              = render "layouts/school_admin_menu"
-            - if current_user.admin?
-              = render "layouts/admin_menu"
-          -# .fb-sidebar-footer
-          -#   %h6.mb-0 Footer
         .fb-content-wrapper
           .fb-content
             =yield
     - unless flash.empty?
       %script
+        - type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info')
         - flash.each do |f|
-          - type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info')
           toastr['#{type}']('#{f[1]}');
         - flash.clear
     / end:: Page

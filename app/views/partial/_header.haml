@@ -1,0 +1,118 @@
+.header-section.section
+  .header-top
+    .container
+      .row
+        .col
+          .header-top-wrapper
+            .row
+              .header-social.col-md-4.col-12
+                %a{href: "#"}
+                  %i.fa.fa-facebook
+                %a{href: "#"}
+                  %i.fa.fa-twitter
+                %a{href: "#"}
+                  %i.fa.fa-linkedin
+                %a{href: "#"}
+                  %i.fa.fa-instagram
+                %a{href: "#"}
+                  %i.fa.fa-pinterest-p
+
+              .header-logo.col-md-4.col-12
+                %a.logo{href: "index.html"}
+                  %b We Care
+
+              .account-menu.col-md-4.col-12
+                %ul
+                  %li
+                    %a{href: "#"} My Account
+                  %li
+                    %a{href: "wishlist.html"} Wishlist
+                  %li
+                    %a{"data-toggle" => "dropdown", href: "#"}
+                      %i.fa.fa-shopping-cart
+                      %span.num 2
+
+                    .mini-cart-brief.dropdown-menu.text-left
+
+                      .all-cart-product.clearfix
+                        .single-cart.clearfix
+                          .cart-image
+                            %a{href: "product-details.html"}
+                              -# %img{alt: "", src: "img/cart/1.jpg"}/
+                          .cart-info
+                            %h5
+                              %a{href: "product-details.html"} Holiday Candle
+                            %p 1 x £9.00
+                            %a.cart-delete{href: "#", title: "Remove this item"}
+                              %i.fa.fa-trash-o
+                        .single-cart.clearfix
+                          .cart-image
+                            %a{href: "product-details.html"}
+                              -# %img{alt: "", src: "img/f/img/logo.pngcart/2.jpg"}/
+                          .cart-info
+                            %h5
+                              %a{href: "product-details.html"} Christmas Tree
+                            %p 1 x £9.00
+                            %a.cart-delete{href: "#", title: "Remove this item"}
+                              %i.fa.fa-trash-o
+
+                      .cart-totals
+                        %h5
+                          Total
+                          %span £12.00
+
+                      .cart-bottom.clearfix
+                        %a{href: "checkout.html"} Check out
+
+  .header-bottom.section
+    .container
+      .row
+        .header-bottom-wrapper.text-center.col
+          .header-bottom-logo
+            %a.logo{href: "index.html"}
+              %img{alt: "logo", src: "img/logo.png"}/
+
+          %nav#main-menu.main-menu
+            %ul
+              %li.active
+                %a{href: "index.html"} home
+              %li
+                %a{href: "shop.html"} shop
+                %ul.sub-menu
+                  %li
+                    %a{href: "shop.html"} shop page
+                  %li
+                    %a{href: "product-details.html"} product details
+              %li
+                %a{href: "about.html"} about
+              %li
+                %a{href: "#"} pages
+                %ul.sub-menu
+                  %li
+                    %a{href: "cart.html"} cart
+                  %li
+                    %a{href: "checkout.html"} checkout
+                  %li
+                    %a{href: "wishlist.html"} wishlist
+                  %li
+                    %a{href: "under-construction.html"} Under Construction
+              %li
+                %a{href: "blog.html"} blog
+                %ul.sub-menu
+                  %li
+                    %a{href: "blog.html"} blog page
+                  %li
+                    %a{href: "blog-details.html"} blog details
+              %li
+                %a{href: "contact.html"} contact
+          .header-search
+
+            %button.search-toggle
+              %i.ion-ios-search-strong
+
+            .header-search-form
+              %form{action: "#"}
+                %input{placeholder: "Search...", type: "text"}/
+                %button
+                  %i.ion-ios-search-strong
+          .mobile-menu.section.d-md-none
