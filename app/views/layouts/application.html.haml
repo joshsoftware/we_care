@@ -27,12 +27,9 @@
   / begin:: Body
   %body
     / begin:: Page
-    .fb-page-wrapper
-      = render "partial/header"
-      %section.d-flex.fb-page
-        .fb-content-wrapper
-          .fb-content
-            =yield
+    -# = render "partial/header"
+    -# = render "partial/product_list"
+    =yield
     - unless flash.empty?
       %script
         - type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info')
