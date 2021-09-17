@@ -6,17 +6,15 @@
 %div
   .container
     .row
-      .section-title.text-center.col.mb-60
-        %h1 Featured Products
+      .section-title.text-center.col.mb-60.pt-10
+        %h1 Gallery
     .row.row-cols-3
       - @auction_items.each do |item|
-        .col-sm-4.mt-3
+        .col-sm-4.mt-2
           .product
             .image
               %a.img
                 %img.zoom{alt: "Product", src: item.image_url}/
-              %a.wishlist{href: "#"}
-                %i.fa.fa-heart-o
             .content.p-4
               .head.fix
                 .title-category.float-left
@@ -24,4 +22,4 @@
                     %a #{item.name}
                   %a #{item.user.name}
                 .price.float-right
-                  %span.new #{item.min_bid_amount}
+                  %span.new ₹ #{item.current_bid_amount}
