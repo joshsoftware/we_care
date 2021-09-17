@@ -85,4 +85,3 @@ production:
   <<: *default
   database: we_care_production
   username: postgres
-  password: josh123
