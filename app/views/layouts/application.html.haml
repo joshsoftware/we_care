@@ -27,13 +27,15 @@
   / begin:: Body
   %body
     / begin:: Page
-    -# = render "partial/header"
-    -# = render "partial/product_list"
-    =yield
+    .fb-page-wrapper
+      = render "partial/header"
+      .fb-content-wrapper
+        .fb-content
+          =yield
     - unless flash.empty?
       %script
-        - type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info')
         - flash.each do |f|
+          - type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info')
           toastr['#{type}']('#{f[1]}');
         - flash.clear
     / end:: Page

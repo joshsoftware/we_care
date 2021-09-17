@@ -1,2 +1,27 @@
-= render "partial/header"
-= render "partial/product_list"
+%section.mt-4.pt-4
+%section.mt-4.pt-4
+%section.mt-2.pt-2
+.box
+  =image_tag('banner.png')
+%div
+  .container
+    .row
+      .section-title.text-center.col.mb-60
+        %h1 Featured Products
+    .row.row-cols-3
+      - @auction_items.each do |item|
+        .col-sm-4.mt-3
+          .product
+            .image
+              %a.img
+                %img.zoom{alt: "Product", src: item.image_url}/
+              %a.wishlist{href: "#"}
+                %i.fa.fa-heart-o
+            .content.p-4
+              .head.fix
+                .title-category.float-left
+                  %h5.title
+                    %a #{item.name}
+                  %a #{item.user.name}
+                .price.float-right
+                  %span.new #{item.min_bid_amount}

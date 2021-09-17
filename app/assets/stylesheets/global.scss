@@ -8,10 +8,10 @@
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     1.    Theme Default CSS
     2.    Header Section
 	3.    Hero Section
@@ -26,7 +26,7 @@
 	12.   Blog Section
 	13.   Contact Section
 	14.   Footer Section
-	
+
 -----------------------------------------------------------------------------------*/
 /*----------------------------------------*/
 /*  1.  Theme default CSS
@@ -680,7 +680,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background-position: center center;
   background-repeat: no-repeat;
   padding: 230px 0; }
-  @media only screen and (min-width: 1200px) and (max-width: 1600px) {
+  @media only screen and (min-width: 1200px) and (max-width: 100%) {
     .page-banner-section {
       padding: 150px 0; } }
   @media only screen and (min-width: 992px) and (max-width: 1200px) {
@@ -1684,7 +1684,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .single-banner {
   position: relative; }
   .single-banner img {
-    width: 100%; }
+    width: 100%; height: 100%}
   .single-banner .banner-content {
     position: absolute;
     top: 50%;
@@ -3261,3 +3261,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     letter-spacing: 0.5px; }
     .footer-bottom p a {
       color: #83a931; }
+
+.zoom {
+  background-color: white;
+  transition: transform .2s; /* Animation */
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  object-fit: contain;
+}
