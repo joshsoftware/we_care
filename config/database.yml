@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: we_care_development
+  password: josh123
+  username: postgres
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -83,4 +85,4 @@ production:
   <<: *default
   database: we_care_production
   username: we_care
-  password: <%= ENV['WE_CARE_DATABASE_PASSWORD'] %>
+  password: josh123
