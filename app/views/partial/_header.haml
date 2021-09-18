@@ -3,6 +3,8 @@
     .row
       .col
         .header-top-wrapper
-          .header-logo.mx-auto
-            %a.logo
-              %h1{style:"font-family: 'Comic Sans MS', 'Comic Sans', cursive;font-style: italic;"} WeCare
+          .header.logo.row
+            %a.col.m-2
+              =image_tag('logo.png', style:"width: 170px")
+            %a.col.m-2
+              =image_tag('josh-logo.svg', style:"width: 170px", class:"float-end")
