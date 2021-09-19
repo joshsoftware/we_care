@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  mobile: MyString
+  bid_amount: 1.5
+  auction_item: one
+
+two:
+  email: MyString
+  mobile: MyString
+  bid_amount: 1.5
+  auction_item: two

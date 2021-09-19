@@ -23,3 +23,5 @@
                   %a #{item.user.name}
                 .price.float-right
                   %span.new ₹ #{item.current_bid_amount}
+              .action-button.fix
+                = link_to 'Add your bid', auction_item_path(item.id)

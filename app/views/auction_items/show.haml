@@ -1,0 +1,57 @@
+%section.mt-4.pt-4
+%section.mt-4.pt-4
+%section.mt-2.pt-2
+%div
+  .container
+    .row
+      .single-product-content.col-lg-5.col-12.mb-30
+        / Title
+        %h1.title #{@auction_item.name}
+        / Product Rating
+        %span.product-rating
+          %i.fa.fa-star
+          %i.fa.fa-star
+          %i.fa.fa-star
+          %i.fa.fa-star
+          %i.fa.fa-star
+        / Price
+        %span.product-price  ₹ #{@auction_item.current_bid_amount}
+        / Description
+        .description
+          %p 
+        / Color
+        .product-share.fix
+          Note: Highest bid will be updated every 1 hour, check back after 1 hour for latest price of product
+        .product-color.fix
+          %h5 Enter details
+          = bootstrap_form_for(@bid) do |f|
+            = f.hidden_field :auction_item_id, value: @auction_item.id
+            = f.email_field :email, required: true
+            = f.telephone_field :mobile, required: true
+            = f.number_field :bid_amount, min: @auction_item.current_bid_amount, required: true
+            = f.submit "Add your bid"
+
+        / Action Button
+        .product-action-button.fix
+          -# %button
+          -#   %i.ion-ios-email-outline>
+          -#   Email to a friend
+          -# %button
+          -#   %i.ion-ios-heart-outline>
+          -#   Wishlist
+          -# %button
+          -#   %i.ion-ios-printer-outline>
+          -#   Print
+        / Social Share
+        .product-share.fix
+          %button
+            = link_to 'Back', root_path
+          -# %h6 Share :
+          -# %a{:href => "#"}
+          -#   %i.fa.fa-facebook
+          -# %a{:href => "#"}
+          -#   %i.fa.fa-twitter
+          -# %a{:href => "#"}
+          -#   %i.fa.fa-instagram
+          -# %a{:href => "#"}
+          -#   %i.fa.fa-pinterest-p
