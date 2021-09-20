@@ -8,6 +8,6 @@ class BidsController < ApplicationController
   private
 
   def bid_params
-    params.require(:bid).permit(:email, :mobile, :bid_amount, :auction_item_id)
+    params.require(:bid).permit(:name, :mobile, :bid_amount, :auction_item_id)
   end
 end

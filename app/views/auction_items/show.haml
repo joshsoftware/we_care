@@ -7,18 +7,10 @@
       .single-product-content.col-lg-5.col-12.mb-30
         / Title
         %h1.title #{@auction_item.name}
-        / Product Rating
-        %span.product-rating
-          %i.fa.fa-star
-          %i.fa.fa-star
-          %i.fa.fa-star
-          %i.fa.fa-star
-          %i.fa.fa-star
-        / Price
         %span.product-price  ₹ #{@auction_item.current_bid_amount}
         / Description
         .description
-          %p 
+          %p
         / Color
         .product-share.fix
           Note: Highest bid will be updated every 1 hour, check back after 1 hour for latest price of product
@@ -26,7 +18,7 @@
           %h5 Enter details
           = bootstrap_form_for(@bid) do |f|
             = f.hidden_field :auction_item_id, value: @auction_item.id
-            = f.email_field :email, required: true
+            = f.text_field :name, required: true, label: 'Name'
             = f.telephone_field :mobile, required: true
             = f.number_field :bid_amount, min: @auction_item.current_bid_amount, required: true
             = f.submit "Add your bid"
