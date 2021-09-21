@@ -11,10 +11,18 @@
           %span.product-price  ₹ #{auction_item.current_bid_amount}
           / Description
           .description
-            %p
+            - bids = auction_item.bids
+            %p Total bids: #{bids.length}
+
+            - bid = bids.filter{|bid| bid.status == 'approved'}.last
+            - if bid
+              %p Current Owner
+              = bid.name
+              = bid.mobile
+              = bid.bid_amount
           / Color
           .product-color.fix
-            - auction_item.bids.where(status: nil).each do |bid|
+            - bids.filter{|bid| bid.status == nil}.each do |bid|
               = bootstrap_form_for(bid) do |f|
                 = bid.name
                 = bid.mobile
