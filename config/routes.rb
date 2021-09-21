@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   get '/homes', to: 'home#index'
   resources :auction_items, only: [:show]
-  resources :bids, only: [:create]
+  resources :bids, only: [:create, :update]
+  resources :admin, only: [:index]
 end

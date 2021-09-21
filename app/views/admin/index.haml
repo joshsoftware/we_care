@@ -1,0 +1,23 @@
+%section.mt-4.pt-4
+%section.mt-4.pt-4
+%section.mt-2.pt-2
+%div
+  .container
+    - @auction_items.each do |auction_item|
+      .row
+        .single-product-content.col-lg-5.col-12.mb-30
+          / Title
+          %h1.title #{auction_item.name}
+          %span.product-price  ₹ #{auction_item.current_bid_amount}
+          / Description
+          .description
+            %p
+          / Color
+          .product-color.fix
+            - auction_item.bids.where(status: nil).each do |bid|
+              = bootstrap_form_for(bid) do |f|
+                = bid.name
+                = bid.mobile
+                = bid.bid_amount
+                = f.hidden_field :status, value: 'approved'
+                = f.submit "Approve"
