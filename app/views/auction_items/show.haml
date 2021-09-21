@@ -19,8 +19,8 @@
           = bootstrap_form_for(@bid) do |f|
             = f.hidden_field :auction_item_id, value: @auction_item.id
             = f.text_field :name, required: true, label: 'Name'
-            = f.telephone_field :mobile, required: true
-            = f.number_field :bid_amount, min: @auction_item.current_bid_amount, required: true
+            = f.telephone_field :mobile, required: true, minlength: 10
+            = f.number_field :bid_amount, min: @auction_item.current_bid_amount + 100, required: true
             = f.submit "Add your bid"
 
         / Action Button
