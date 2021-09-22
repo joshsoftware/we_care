@@ -22,7 +22,7 @@
               = bid.bid_amount
           / Color
           .product-color.fix
-            - bids..sort_by{|bid| bid.bid_amount}.reverse.each do |bid|
+            - bids.sort_by{|bid| bid.bid_amount}.reverse.each do |bid|
               = bootstrap_form_for(bid) do |f|
                 = bid.name
                 = bid.mobile
