@@ -28,6 +28,10 @@
                   %span.new ₹ #{item.current_bid_amount}
                   - if bid
                     .div
-                      %a Current Owner: #{bid.name}
-              .action-button.fix
-                = link_to 'Add your bid', auction_item_path(item.id)
+                      - if Time.now < item.auction.ends_at
+                        %a Current Owner: #{bid.name}
+                      -else
+                        %a Sold to: #{bid.name}
+              - if Time.now < item.auction.ends_at
+                .action-button.fix
+                  = link_to 'Add your bid', auction_item_path(item.id)
