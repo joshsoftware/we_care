@@ -22,10 +22,11 @@
               = bid.bid_amount
           / Color
           .product-color.fix
-            - bids.filter{|bid| bid.status == nil}.each do |bid|
+            - bids..sort_by{|bid| bid.bid_amount}.reverse.each do |bid|
               = bootstrap_form_for(bid) do |f|
                 = bid.name
                 = bid.mobile
                 = bid.bid_amount
                 = f.hidden_field :status, value: 'approved'
-                = f.submit "Approve"
+                - if bid.status == nil
+                  = f.submit "Approve"
