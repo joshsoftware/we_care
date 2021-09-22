@@ -10,6 +10,7 @@
         %h1 Gallery
     .row.row-cols-3
       - @auction_items.each do |item|
+        - bid = item.bids.filter{|bid| bid.status == 'approved'}.sort_by{|bid| bid.bid_amount}.last
         .col-sm-4.mt-2
           .product
             .image
@@ -25,5 +26,8 @@
                   %a #{item.user.name}
                 .price.float-right
                   %span.new ₹ #{item.current_bid_amount}
+                  - if bid
+                    .div
+                      %a Current Owner: #{bid.name}
               .action-button.fix
                 = link_to 'Add your bid', auction_item_path(item.id)
