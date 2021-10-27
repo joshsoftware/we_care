@@ -11,7 +11,7 @@ While not required to contribute, we recommend [RVM](https://rvm.io/) to manage 
 7. Write your (feature/bugfix)
 8. Install the dependencies `bundle install`, `yarn install`
 9. Run the tests `rspec`
-10. Commit your changes `git commit -am 'Added some feature'`
+10. Commit your changes `git commit -m 'Added some feature'`
 11. Push to the branch `git push origin my-new-feature`
 12. Create new [Pull Request](https://help.github.com/articles/creating-a-pull-request/)
 
