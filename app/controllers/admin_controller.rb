@@ -2,6 +2,7 @@ class AdminController < ApplicationController
   include HttpAuthConcern
 
   def index
-    @auction_items = AuctionItem.includes(:bids).all
+    @auctions = Auction.where("starts_at < ?",Time.current).where("ends_at > ?", Time.current)
+    @auction_items = AuctionItem.where(auction_id: @auctions.pluck(:id)).where(is_bid_allowed: true).includes(:bids).all
   end
 end
